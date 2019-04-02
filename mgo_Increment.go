@@ -3,7 +3,6 @@ package mongo
 import (
 	"fmt"
 
-	"github.com/flywithbug/log4go"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 )
@@ -51,7 +50,6 @@ func GetIncrementId(dbName, incrementName string) (int64, error) {
 	if err != nil {
 		err = createIncrementIds(dbName, incrementName)
 		if err != nil {
-			log4go.Error(err.Error())
 			return -1, err
 		}
 		increment.SequenceValue = IncrementDBStarId
