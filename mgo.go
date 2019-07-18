@@ -26,6 +26,13 @@ type Monger interface {
 	RemoveAll(collection string, selector interface{}) error
 }
 
+func CloseAll()  {
+	for _,v := range sessionMap{
+		v.session.Close()
+	}
+}
+
+
 type tMongo struct {
 	db        string
 	destroyed bool
